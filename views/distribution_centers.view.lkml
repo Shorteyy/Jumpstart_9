@@ -2,6 +2,11 @@ view: distribution_centers {
   sql_table_name: `thelook_ecommerce.distribution_centers` ;;
   drill_fields: [id]
 
+  dimension: location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
   dimension: id {
     primary_key: yes
     type: number

@@ -2,6 +2,16 @@ view: products {
   sql_table_name: `thelook_ecommerce.products` ;;
   drill_fields: [id]
 
+  measure: total_cost {
+    type: sum
+    sql: ${cost} ;;
+  }
+  measure: average_cost {
+    type: average
+    sql: ${cost} ;;
+    value_format_name: usd
+  }
+
   dimension: id {
     primary_key: yes
     type: number
@@ -48,13 +58,13 @@ view: products {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	name,
-	distribution_centers.name,
-	distribution_centers.id,
-	inventory_items.count,
-	order_items.count
-	]
+  id,
+  name,
+  distribution_centers.name,
+  distribution_centers.id,
+  inventory_items.count,
+  order_items.count
+  ]
   }
 
 }

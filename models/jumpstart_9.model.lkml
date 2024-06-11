@@ -24,6 +24,14 @@ explore: inventory_items {
   }
 }
 
+explore: products {
+  join: distribution_centers {
+    type: left_outer
+    sql_on: ${distribution_centers.id} = ${products.distribution_center_id} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: distribution_centers {}
 
 explore: order_items {
